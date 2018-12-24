@@ -226,3 +226,293 @@ def win(t,v):
 
     else:
         print("condition not statisfied")
+
+################################## STOPWATCH #######################################
+import time
+def stopwatch(startvalue):
+    try:
+        if(startvalue==1):
+            start = time.time()
+            print("starting..........")
+
+            print("hello,how are you?")
+
+            stopvalue = int(input("enter 0 to start: "))
+        else:
+            raise ValueError
+        if(stopvalue==0):
+            print("ending........")
+            end = time.time()
+            print("elapsed time:  ", round((end - start),2))
+        else:
+            raise ValueError
+    except ValueError:
+        print("wrong value")
+
+################################## TIC TAC TOE #######################################
+
+board = [' ' for i in range(10)]
+
+def insertletter(letter,pos):
+    board[pos]=letter
+
+def freespace(pos):
+    return board[pos]==' '
+
+def printboard(board):
+    print("  |  | ")
+    print(board[1] + ' ' + board[2] + ' ' + board[3] + ' ')
+    print("  |  | ")
+    print("---------")
+    print("  |  | ")
+    print( board[4] + ' ' + board[5] + ' ' + board[6] + ' ')
+    print("  |  | ")
+    print("---------")
+    print("  |  | ")
+    print(board[7] + ' ' + board[8] + ' ' + board[9] + ' ')
+    print("  |  | ")
+
+def winner(b,l):
+    return (b[1]==l and b[2]==l and b[3]==l or
+    b[4] == l and b[5] == l and b[6] == l or
+    b[7] == l and b[8] == l and b[9] == l or
+    b[1] == l and b[4] == l and b[7] == l or
+    b[2] == l and b[5] == l and b[8] == l or
+    b[3] == l and b[6] == l and b[9] == l or
+    b[1] == l and b[5] == l and b[9] == l or
+    b[3] == l and b[5] == l and b[7] == l)
+
+def playermove():
+    run = True
+    while run:
+        move = input("select between 1-9: ")
+        try:
+            move=int(move)
+            if move>0 and move<10:
+                if freespace(move):
+                    run = False
+                    insertletter('x',move)
+                else:
+                    print("this is occupied")
+
+            else:
+                print("invalid number")
+
+        except:
+            print("type integer")
+def computermove():
+    possiblemove = [x for x,letter in enumerate(board) if letter == ' ' and x!=0]
+    move = 0
+    for let in ['o','x']:
+        for i in possiblemove:
+            boardcopy = board[:]
+            boardcopy[i]= let
+            if winner(boardcopy,let):
+                move = i
+                return move
+
+    corner = []
+    for i in possiblemove:
+        if i in [1,3,7,9]:
+            corner.append(i)
+
+    if len(corner)>0:
+        move = selectrandom(corner)
+        return move
+
+    if 5 in possiblemove:
+        move=5
+        return move
+
+    edge = []
+    for i in possiblemove:
+        if i in [2,4,6,8]:
+            edge.append(i)
+
+    if len(edge) > 0:
+        move = selectrandom(edge)
+        return move
+
+
+
+
+
+def selectrandom(li):
+    ln = len(li)
+    r = random.randrange(0,ln)
+    return li[r]
+
+def fullboard(board):
+    if board.count(' ')>1:
+        return False
+    else:
+        return True
+
+def main():
+    printboard(board)
+    while not(fullboard(board)):
+
+
+        if not (winner(board, ('x'))):
+            move = computermove()
+            if move == 0:
+                print("tie")
+            else:
+                insertletter('o',move)
+                print("computer move: ",move)
+            printboard(board)
+
+        else:
+            print("user won")
+            break
+
+        if not (winner(board,('o'))):
+            playermove()
+            printboard(board)
+
+        else:
+            print("computer won")
+            break
+
+    if fullboard(board):
+        print("tie")
+
+################################## PERMUTATION #######################################
+
+def permutationpy(data):
+    if len(data) == 0:
+        return ['']
+    prev_list = permutationpy(data[1:len(data)])
+    next_list = []
+    for i in range(0, len(prev_list)):
+        for j in range(0, len(data)):
+            new_str = prev_list[i][0:j] + data[0] + prev_list[i][j:len(data) - 1]
+            if new_str not in next_list:
+                next_list.append(new_str)
+    return next_list
+
+################################## ANAGRAM ###########################################
+
+def anagramcheck(str1,str2):
+    list_str1 = list(str1)
+    list_str2 = list(str2)
+    if len(list_str1)!=len(list_str2):
+        print("not anagram")
+    else:
+        for i in range(len(list_str1)-1):
+            for j in range(len(list_str1)-1):
+                if(list_str1[j]>list_str1[j+1]):
+                    list_str1[j+1], list_str1[j]=list_str1[j],list_str1[j+1]
+
+
+        print("sorted 1: ",list_str1)
+        for p in range(len(list_str2) - 1):
+            for q in range(len(list_str2) - 1):
+                if (list_str2[q] > list_str2[q+1]):
+                    list_str2[q+1], list_str2[q] = list_str2[q], list_str2[q+1]
+
+        print("sorted 2: ", list_str2)
+
+        if(list_str1==list_str2):
+            print("it is anagram")
+        else:
+            print("not anagram")
+
+################################## PRIME NUMBERS ###########################################
+
+def primenumbers():
+    for num in range(0,1000):
+        if num>1:
+            for i in range(2,num):
+                if (num%i)==0:
+                    break
+            else:
+                print(num)
+
+################################## PALINDROM ########################################
+def checkcondition():
+    list_prime=[]
+    for num in range(0,1000):
+        if num>1:
+            for i in range(2,num):
+                if (num%i)==0:
+                    break
+            else:
+                list_prime.append(num)
+
+    print(list_prime)
+    #result = map(palindrom, list_prime)
+    #print(list(result))
+    palindrom(list_prime)
+def palindrom(number):
+    l=[]
+    for num in number:
+        num = str(num)
+        rev = num[::-1]
+        if num==rev:
+            l.append(int(rev))
+    print("palindrom number ",l)
+
+##################################### ALGORITHMS ###################################
+list_string=["janhavi","pushkar","nikhil","rohini"]
+list_int=[1,5,4,77,89,2]
+
+def binarysearchint(key):
+    list_int.sort()
+    start = 0
+    print(list_int)
+    ill = len(list_int)
+    while start < ill:
+        mid = start + (ill - start) // 2
+
+        if list_int[mid] == key:
+            print("found at ", mid, "index")
+            break
+
+        elif key > list_int[mid]:
+            start = mid
+
+        else:
+            ill = mid
+
+    else:
+        print("number not in the list")
+
+
+def binarysearchstring(key2):
+    list_string.sort()
+    start = 0
+    print(list_string)
+
+    end = len(list_string)
+
+    while start < end:
+        mid = start + (end - start) // 2
+
+        if list_int[mid] == key2:
+            print("found at ", mid)
+            break
+
+        elif (key2 > list_string[mid]):
+            start = mid
+
+        else:
+            end = mid
+    else:
+        print("not found")
+
+def bubblesortint():
+    pass
+
+def bubblesortstring():
+    pass
+
+def insertionsortint():
+    pass
+
+def insertionsortstring():
+    pass
+
+
+
+
