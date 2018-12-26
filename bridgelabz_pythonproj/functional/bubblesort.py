@@ -1,8 +1,6 @@
 '''
 /**********************************************************************************
-* Purpose: User Input and Replace String Template “Hello <<UserName>>, How are you?”
-* logic:-taking user input for username and replacing
-*        <<username>> with user entered username
+* Purpose: Prints the harmonic value: 1/1 + 1/2 + ... + 1/N
 *
 * @author : Janhavi Mhatre
 * @python version 3.7
@@ -11,9 +9,17 @@
 *
 ***********************************************************************************/
 '''
+
 from utilities import utility
+try:
+    intlist = list(input("Enter elements separated by spaces").split(" "))
+    intlist = [int(x) for x in intlist]
 
-username = input("enter username: ")
+except ValueError:
+    print("only int")
 
-#username = utility.accept()
-utility.Username(username)
+
+utility.userint(intlist)
+
+
+

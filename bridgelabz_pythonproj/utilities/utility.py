@@ -418,6 +418,9 @@ def anagramcheck(str1,str2):
         else:
             print("not anagram")
 
+
+
+
 ################################## PRIME NUMBERS ###########################################
 
 def primenumbers():
@@ -454,18 +457,19 @@ def palindrom(number):
     print("palindrom number ",l)
 
 ##################################### ALGORITHMS ###################################
-list_string=["janhavi","pushkar","nikhil","rohini"]
-list_int=[1,5,4,77,89,2]
+elapsed_time={}
 
-def binarysearchint(key):
+def binarysearchint(list_int,key):
+    s1 = time.time()
     list_int.sort()
     start = 0
     print(list_int)
-    ill = len(list_int)
-    while start < ill:
-        mid = start + (ill - start) // 2
+    end = len(list_int)
+    for i in range(start,end):
+        mid = start + (end - start) // 2
 
         if list_int[mid] == key:
+            #globals() ['index'] = mid
             print("found at ", mid, "index")
             break
 
@@ -473,23 +477,28 @@ def binarysearchint(key):
             start = mid
 
         else:
-            ill = mid
+            end = mid
 
     else:
-        print("number not in the list")
+        print("not found")
+    e1=time.time()
+    el1=e1-s1
+    elapsed_time.update({"binary int":el1})
+    #print(elapsed_time)
 
 
-def binarysearchstring(key2):
+def binarysearchstring(list_string,key2):
+    s2 = time.time()
     list_string.sort()
     start = 0
     print(list_string)
 
     end = len(list_string)
 
-    while start < end:
+    for i in range(start,end):
         mid = start + (end - start) // 2
 
-        if list_int[mid] == key2:
+        if list_string[mid] == key2:
             print("found at ", mid)
             break
 
@@ -500,19 +509,227 @@ def binarysearchstring(key2):
             end = mid
     else:
         print("not found")
+    e2 = time.time()
+    el2 = e2 - s2
+    elapsed_time.update({"binary string": el2})
+    #print(elapsed_time)
 
-def bubblesortint():
+def bubblesortint(list_int):
+    s3 = time.time()
+    length = len(list_int)
+    for i in range(1,length-1):
+        print("pass ",i)
+
+        for j in range(0,length-1):
+            if list_int[j]>list_int[j+1]:
+                temp = list_int[j+1]
+                list_int[j+1]=list_int[j]
+                list_int[j]=temp
+        print("after pass ",i," ",list_int)
+    print("total pass required: ",i)
+    e3 = time.time()
+    el3 = e3 - s3
+    elapsed_time.update({"bubble sort int": el3})
+
+
+
+def bubblesortstring(list_string):
+    s4 = time.time()
+    length = len(list_string)
+    for i in range(1, length - 1):
+        print("pass ", i)
+
+        for j in range(0, length - 1):
+            if list_string[j] > list_string[j + 1]:
+                temp = list_string[j + 1]
+                list_string[j + 1] = list_string[j]
+                list_string[j] = temp
+        print("after pass ", i, " ", list_string)
+    print("total pass required: ", i)
+    e4 = time.time()
+    el4 = e4 - s4
+    elapsed_time.update({"bubble sort string": el4})
+
+def insertionsortint(list_int):
+    s5 = time.time()
+    length = len(list_int)
+    for i in range(0,length):
+
+        for j in range(i-1,-1,-1):
+            if list_int[j] > list_int[j + 1]:
+                temp = list_int[j + 1]
+                list_int[j + 1] = list_int[j]
+                list_int[j] = temp
+    print("after sort ",list_int)
+    e5 = time.time()
+    el5 = e5 - s5
+    elapsed_time.update({"insertion sort int": el5})
+
+
+def insertionsortstring(list_string):
+    s6 = time.time()
+    length = len(list_string)
+    for i in range(0, length):
+
+        for j in range(i - 1, -1, -1):
+            if list_string[j] > list_string[j + 1]:
+                temp = list_string[j + 1]
+                list_string[j + 1] = list_string[j]
+                list_string[j] = temp
+    print("after sort ",list_string)
+    e6 = time.time()
+    el6 = e6 - s6
+    elapsed_time.update({"insertion sort string": el6})
+    sorted_elapsed = sorted(elapsed_time.items(),key=lambda x:x[1])
+    #elapsed_time.sort()
+    print("sorted elapsed time",sorted_elapsed)
+
+########################################## GUESS NUMBER #############################
+
+def guess(low,k):
+    mid = low +(k-low)//2
+
+
+    if (k-low)== 1:
+        print("your number is ",mid)
+
+
+    else:
+        print("is your number less than ",mid)
+        b = int(input("if yes type 0 else 1 "))
+        if b==0:
+            guess(low,mid)
+
+        else:
+            guess(mid,k)
+
+################################ READ FILE ##########################################
+
+def filesearching(list_file):
+    key2 = input("enter word to be search ")
+    binarysearchstring(list_file,key2)
+
+################################### INSERTION SORT ##################################
+
+def userstring(stringlist):
+    insertionsortstring(stringlist)
+
+################################### BUBBLE SORT #####################################
+def bubblesort(listinteger):
+    for p in range(len(listinteger) - 1):
+        for q in range(len(listinteger) - 1):
+            if (listinteger[q] > listinteger[q + 1]):
+                listinteger[q + 1], listinteger[q] = listinteger[q], listinteger[q + 1]
+
+    print("sorted : ", listinteger)
+
+
+def userint(intlist):
+    bubblesort(intlist)
+################################### MERGE SORT ##########################################
+def merge_sort(array):
+    if len(array) <= 1:
+        return array
+
+    mid = int(len(array) / 2)
+    l=array[:mid]
+    r=array[mid:]
+    print("left",l)
+    print("right",r)
+    left = merge_sort(l)
+    print(left)
+    right = merge_sort(r)
+    print(right)
+
+    return merge(left, right)
+
+
+def merge(left, right):
+    result = []
+    leftindex = rightindex = 0
+
+    while leftindex < len(left) and rightindex < len(right):
+
+        if left[leftindex] < right[rightindex]:
+
+            result.append(left[leftindex])
+            leftindex += 1
+
+        else:
+
+            result.append(right[rightindex])
+            rightindex += 1
+
+    result.extend(left[leftindex:])
+    result.extend(right[rightindex:])
+
+    return result
+
+
+################################# VENDING MACHINE ###################################
+def vending(notes):
     pass
 
-def bubblesortstring():
-    pass
+################################## TEMPERATURE CONVERSION ###########################
 
-def insertionsortint():
-    pass
+def ftoc(f):
+    c=(f-32)*(5 / 9)     #formula for calculation
 
-def insertionsortstring():
-    pass
+    print("temperature in Celsius: ",c)
 
 
+def ctof(c):
+    f=(c* (9/5)) + 32    #formula for calculation
 
+    print("temperature in fahrenheit: ",f)
 
+############################ SQUREROOT OF NUMBER####################################
+def sqrnum(c):
+    t=c
+    epsilon = 1e-15
+    while abs(t-c/t)>epsilon*t:
+        t=(c/t+t)/2.0
+    print("Square Root : ",t)
+
+################################# MONTHLY PAYMENT###################################
+def monthlypay(p,y,r):
+    totalmonths=12*y
+    mrate=r/(12*100)
+    payment=p*mrate/1-(1+mrate)**(-totalmonths)
+    print("Payment : ",payment)
+
+############################## DAY OF WEEK #########################################
+def dayweek(day,Month,year):
+
+    month = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December",
+    }
+
+    days= {
+        0: "Sunday",
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thusday",
+        5: "Friday",
+        6: "Saturday",
+    }
+
+    print(day, month.get(Month), year)
+
+    year1 = year - (14 - Month) // 12
+    x = year1 + year1 // 4 - year1 // 100 + year1 // 400
+    month1 = Month + 12 * ((14 - Month) // 12) - 2
+    date1 = (day + x + 31 * month1 // 12) % 7
+    print(date1," : ",days.get(date1))

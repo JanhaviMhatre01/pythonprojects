@@ -1,8 +1,6 @@
 '''
 /**********************************************************************************
-* Purpose: User Input and Replace String Template “Hello <<UserName>>, How are you?”
-* logic:-taking user input for username and replacing
-*        <<username>> with user entered username
+* Purpose: Prints the harmonic value: 1/1 + 1/2 + ... + 1/N
 *
 * @author : Janhavi Mhatre
 * @python version 3.7
@@ -11,9 +9,16 @@
 *
 ***********************************************************************************/
 '''
+
 from utilities import utility
 
-username = input("enter username: ")
+filename = "/home/admin1/bridgelabz_pythonproj/sample.txt"
 
-#username = utility.accept()
-utility.Username(username)
+
+with open(filename) as f:
+     list_file = f.read().split(",")
+     list_file[-1]=list_file[-1].strip()
+
+
+utility.filesearching(list_file)
+
