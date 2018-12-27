@@ -12,5 +12,5 @@
 ***********************************************************************************/
 '''
 from utilities import utility
-n = int(input("number of times to flip coin: "))
+n = int(input("number of times to flip coin: "))    # number of times user want to flip coin
 utility.flips(n)

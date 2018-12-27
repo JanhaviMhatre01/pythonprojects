@@ -1,6 +1,6 @@
 '''
 /**********************************************************************************
-* Purpose: Prints the harmonic value: 1/1 + 1/2 + ... + 1/N
+* Purpose: Computes the prime factorization of N.
 *
 * @author : Janhavi Mhatre
 * @python version 3.7

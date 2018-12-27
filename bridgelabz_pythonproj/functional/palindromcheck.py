@@ -1,6 +1,6 @@
 '''
 /**********************************************************************************
-* Purpose: Prints the harmonic value: 1/1 + 1/2 + ... + 1/N
+* Purpose: Anagram and Palindrome
 *
 * @author : Janhavi Mhatre
 * @python version 3.7
@@ -12,7 +12,7 @@
 
 from utilities import utility
 
-utility.checkcondition()
+utility.check_condition()
 
 
 

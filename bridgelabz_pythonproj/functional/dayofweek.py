@@ -12,11 +12,17 @@
 ***********************************************************************************/
 '''
 from utilities import utility
-
 day = int(input("enter day: "))
-Month = int(input("enter month: "))
+if day > 0 and day <32:
+    Month = int(input("enter month: "))
+    if Month>0 and Month<13:
+        year = input("enter year: ")
+        if len(year)==4:
+            utility.dayweek(day,Month,year)
+        else:
+            print("invalid year")
+    else:
+        print("invalid month")
 
-year = int(input("enter year: "))
-
-
-utility.dayweek(day,Month,year)
+else:
+    print("invalid input")

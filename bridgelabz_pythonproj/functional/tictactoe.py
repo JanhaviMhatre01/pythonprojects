@@ -1,11 +1,13 @@
 '''
 /**********************************************************************************
-* Purpose: Prints the harmonic value: 1/1 + 1/2 + ... + 1/N
+* Purpose: Write a Program to play a Cross Game or Tic­Tac­Toe Game. Player 1 is
+* the Computer and the Player 2 is the user. Player 1 take Random Cell that is the
+* Column and Row.
 *
 * @author : Janhavi Mhatre
 * @python version 3.7
 * @platform : PyCharm
-* @since 21-12-2018
+* @since 24-12-2018
 *
 ***********************************************************************************/
 '''

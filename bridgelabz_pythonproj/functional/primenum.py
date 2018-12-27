@@ -1,18 +1,18 @@
 '''
 /**********************************************************************************
-* Purpose: Prints the harmonic value: 1/1 + 1/2 + ... + 1/N
+* Purpose: Take a range of 0 ­ 1000 Numbers and find the Prime numbers in that range
 *
 * @author : Janhavi Mhatre
 * @python version 3.7
 * @platform : PyCharm
-* @since 21-12-2018
+* @since 24-12-2018
 *
 ***********************************************************************************/
 '''
 
 from utilities import utility
 
-utility.primenumbers()
+utility.prime_numbers()
 
 
 

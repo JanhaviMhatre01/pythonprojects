@@ -10,25 +10,18 @@
 ***********************************************************************************/
 '''
 
-
 from utilities import utility
-try:
+
+try:  # handle error if user input is 0
     N = int(input("enter harmonic value N: "))
-    if (N != 0):  # checking if N is not equal to 0
-        utility.harmonicvalue(N)
+    if N != 0:  # checking if N is not equal to 0
+        utility.harmonic_value(N)
     else:
-        raise ZeroDivisionError
+        raise ZeroDivisionError     # number can not be divided by 0 hence raise exception to handle it
 
 
 
 except ZeroDivisionError:
-    print('Handling run-time error: N should not be zero')
+    print('Handling run-time error: N should not be zero')  # if user input is 0 then print this error
 
-'''
-if(N!=0):          #checking if N is not equal to 0
 
-    utility.harmonicvalue(N)
-
-else:
-    print("N should not be 0")
-'''
