@@ -16,4 +16,4 @@ from utilities import utility
 
 m = int(input("enter the number to see its binary representation: "))
 
-utility.decimalconvert(m)
+utility.decimal_convert(m)

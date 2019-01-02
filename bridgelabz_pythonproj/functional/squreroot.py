@@ -15,4 +15,4 @@ from utilities import utility
 
 c = int(input("take a number of which sqrt is to be calculate: "))
 
-utility.sqrnum(c)
+utility.sqr_num(c)

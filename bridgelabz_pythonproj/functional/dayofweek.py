@@ -13,16 +13,15 @@
 '''
 from utilities import utility
 day = int(input("enter day: "))
-if day > 0 and day <32:
-    Month = int(input("enter month: "))
-    if Month>0 and Month<13:
+if 0 < day < 32:
+    months = int(input("enter month: "))
+    if 0 < months < 13:
         year = input("enter year: ")
-        if len(year)==4:
-            utility.dayweek(day,Month,year)
+        if len(year) == 4:
+            utility.day_week(day, months, year)
         else:
             print("invalid year")
     else:
         print("invalid month")
-
 else:
-    print("invalid input")
+    print("invalid day")

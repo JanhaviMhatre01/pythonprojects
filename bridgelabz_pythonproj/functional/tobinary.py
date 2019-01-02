@@ -15,4 +15,6 @@ from utilities import utility
 
 n = int(input("enter the number to see its binary representation: "))
 
-utility.convertbinary(n)
+utility.convert_binary(n)
+
+print(utility.convert_binary(n))

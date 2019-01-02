@@ -19,4 +19,4 @@ p = int(input("enter principal loan amount p: "))
 y = int(input("enter years y: "))
 r = int(input("enter rate r: "))
 
-utility.monthlypay(p,y,r)
+utility.monthly_pay(p, y, r)

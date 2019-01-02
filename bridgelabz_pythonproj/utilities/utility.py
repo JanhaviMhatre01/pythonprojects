@@ -4,14 +4,7 @@ import numpy as np
 import time
 
 
-# from functional import flipcoin
-
-################################################################################
-def accept():
-    a = input("enter: ")
-
-
-################################ REPLACE USERNAME ################################################
+# REPLACE USERNAME
 
 def username_change(username):
     sentence = "Hello <<username>>, How are you?"  # store given label in variable
@@ -25,15 +18,15 @@ def username_change(username):
         print(u)
 
 
-################################# FLIP COIN #################################################
+# FLIP COIN
 
 def flips(n):
     h = 0  # initialise head and tail to 0
     t = 0
 
     for i in range(0, n):  # range between 0 to n
-        coinface = random.uniform(0, 1)  # store randomly generated number between 0 to 1
-        if coinface > 0.5:  # check if randomly generated number is greater than 0.5
+        coin_face = random.uniform(0, 1)  # store randomly generated number between 0 to 1
+        if coin_face > 0.5:  # check if randomly generated number is greater than 0.5
             h += 1  # if condition is true increment heads
 
         else:  # otherwise increment tails
@@ -44,23 +37,7 @@ def flips(n):
     print("percent of heads: ", (t / n) * 100)  # (t / n) * 100 calculates percentage of heads
 
 
-'''
-    repeats()
-
-def repeats():
-    again = input("do you want to do it again? 0:yes 1:no")
-    if again == 0:
-        flipcoin()
-
-    else:
-        print("thanku")
-
-
-if __name__ == '__main__': repeats()
-'''
-
-
-################################# LEAP YEAR ####################################################
+# LEAP YEAR
 
 def check_leap(year):
     if len(year) != 4:  # check length of year is 4 or not
@@ -70,37 +47,37 @@ def check_leap(year):
         year = int(year)
         if (
                 year % 4 == 0 or year % 400 == 0 and year % 100 == 0):  # check whether conditions are satisfied
-                                                                        # for leap year or not
+            # for leap year or not
             print(year, " is leap year")
 
         else:
             print("this is not leap year")
 
 
-##################################### POWER OF TWO ###############################################
+# POWER OF TWO
 
-def power_two(N):
-    if 0 <= N < 31:  # number should be between 0-31.otherwise it will overflows integer value
-        for i in range(0, N):               # takes all the values between 0 to N
-            while i <= N:                       # code will execute till i = input value of N
+def power_two(n):
+    if 0 <= n < 31:  # number should be between 0-31.otherwise it will overflows integer value
+        for i in range(0, n):  # takes all the values between 0 to N
+            while i <= n:  # code will execute till i = input value of N
                 print("2 to the power of", i, "=", 2 ** i)  # 2**i is 2^i
-                break                                          # breaks while loop
+                break  # breaks while loop
 
     else:
         print("N should be in range of 0 - 31")
 
 
-#################################### HARMONIC VALUE ################################
+# HARMONIC VALUE
 
-def harmonic_value(N):
+def harmonic_value(n):
     value = 0  # initialise sum equal to 0
-    for i in range(1, N + 1):
+    for i in range(1, n + 1):
         value += 1 / i  # add values which are in range of 1 to N+1
 
     print("harmonic value is :", value)
 
 
-###################################### PRIME FACTORS ################################################
+# PRIME FACTORS
 
 def prime(num):
     for j in range(2, num):  # as 1 is not prime number,start range from 2 to the given number
@@ -118,15 +95,15 @@ def prime(num):
         print()
 
 
-#################################### Euclidean distance #############################
+# Euclidean distance
 
 def distance(x, y):  # take (x,y) co ordinates as input and put the values
 
-    dist = pow((x * x + y * y), 0.5)   # in formula : square root of (x*x+y*y)
+    dist = pow((x * x + y * y), 0.5)  # in formula : square root of (x*x+y*y)
     print("Euclidean distance is: ", dist)
 
 
-########################### ROOTS OF EQUATION #######################################
+# ROOTS OF EQUATION
 
 def qua(a, b, c):  # taking input of values of a,b,c and putting
 
@@ -140,7 +117,7 @@ def qua(a, b, c):  # taking input of values of a,b,c and putting
     print(first_root, " ", second_root)
 
 
-################################ COUPON #############################################
+# COUPON
 
 def coupon(coupon_number):  # take coupon number as input from user
     count = 0  # suppose it is 25. typecast it in int i.e
@@ -157,30 +134,30 @@ def coupon(coupon_number):  # take coupon number as input from user
     print("total number of  random numbers to generate coupon: ", count)
 
 
-################################### GAMBLER ##########################################
+# GAMBLER
 
 def gambler_game(stake, goal, turns):
-    bets = 0                 # initialise bets, wins, lose to zero at first
+    bets = 0  # initialise bets, wins, lose to zero at first
     wins = 0
     lose = 0
 
-    for i in range(0, turns):      # play between 0 to turns i.e. number of trials
-        amount = stake             # store stake in variable to check whether amount is increasing or not
-        while 0 < amount < goal:   # play till amount is zero or gambler is broken
-            bets += 1              # every time increment bets by 1
-            random_num = random.randint(0, 1)   # generate number between 1/0
-            if random_num < 0.5:       # if number is less than 0.5 increment amount by 1
+    for i in range(0, turns):  # play between 0 to turns i.e. number of trials
+        amount = stake  # store stake in variable to check whether amount is increasing or not
+        while 0 < amount < goal:  # play till amount is zero or gambler is broken
+            bets += 1  # every time increment bets by 1
+            random_num = random.randint(0, 1)  # generate number between 1/0
+            if random_num < 0.5:  # if number is less than 0.5 increment amount by 1
                 amount += 1
             else:
-                amount -= 1            # decrement by 1
+                amount -= 1  # decrement by 1
 
-        if amount == goal:             # when goal is reached increment wins
+        if amount == goal:  # when goal is reached increment wins
             wins += 1
         else:
-            lose += 1                  # increment lose if goal not reach
+            lose += 1  # increment lose if goal not reach
 
     percent_wins = 100 * (wins / turns)  # calculate percent of wins
-    avg_bets = 1 * (bets / turns)           # average bets
+    avg_bets = 1 * (bets / turns)  # average bets
 
     print("total wins: ", wins, " out of ", turns)
     print("total lose: ", lose, " out of ", turns)
@@ -188,43 +165,43 @@ def gambler_game(stake, goal, turns):
     print("average bets are ", avg_bets)
 
 
-######################################### 2D ARRAY ###################################
+# 2D ARRAY
 
 
 def arrays(n, m):
-    arr = []                # create empty array
-    for i in range(0, n):   # taking range between 0 to number of rows
-        arr.append([])      # append null values
+    arr = []  # create empty array
+    for i in range(0, n):  # taking range between 0 to number of rows
+        arr.append([])  # append null values
     for i in range(0, n):
         for j in range(0, m):  # taking range between 0 to number of columns
-            arr[i].append(j)   # for every row append respective column
-            arr[i][j] = 0      # initialise array to zero
+            arr[i].append(j)  # for every row append respective column
+            arr[i][j] = 0  # initialise array to zero
     for i in range(0, n):
         for j in range(0, m):
             print("entry in row: ", i + 1, "entry in column: ", j + 1)  # entries for column and row
             arr[i][j] = int(input())
     # print(arr)
-    a = np.array(arr)     # initial output will be in single row. so to convert it in matrix form use numpy
+    a = np.array(arr)  # initial output will be in single row. so to convert it in matrix form use numpy
     print(a)
 
 
-#################################### DISTINCT TRIPLES ################################
+# DISTINCT TRIPLES
 
 def dist_triples(a, n):
-    count = 0       # count for number of distinct triples
-    for i in range(0, n - 2):     # take arr[0], arr[1], arr[2] to compare
+    count = 0  # count for number of distinct triples
+    for i in range(0, n - 2):  # take arr[0], arr[1], arr[2] to compare
         for j in range(i + 1, n - 1):  # i,j,k represents respective numbers to be compare
             for k in range(j + 1, n):
                 if a[i] + a[j] + a[k] == 0:  # this is required condition to find distinct triples
                     print("triplets are", a[i], " ", a[j], " ", a[k])
-                    count += 1      # when triples are found increment count by 1
+                    count += 1  # when triples are found increment count by 1
     print(count, "number of triplets")
 
 
-################################## WIND CHILL #######################################
+# WIND CHILL
 
 def win(t, v):
-    if t < 120 and 50 > v > 3:   # checking conditions for temperature and speed
+    if t < 120 and 50 > v > 3:  # checking conditions for temperature and speed
         w = 35.74 + 0.6215 * t + (0.4275 * t - 35.75) * math.pow(v, 0.16)  # formula for windchill
         print("wind chill: ", w)
 
@@ -232,44 +209,44 @@ def win(t, v):
         print("condition not satisfied")
 
 
-################################## STOPWATCH #######################################
+# STOPWATCH
 
 
-def stopwatch(start_value):                 # import time
+def stopwatch(start_value):  # import time
     try:
-        if start_value == 1:   # if user enter one
-            start = time.time()   # start timer using time.time()
+        if start_value == 1:  # if user enter one
+            start = time.time()  # start timer using time.time()
             print("starting..........")
 
-            print("hello,how are you?")   # execute this
+            print("hello,how are you?")  # execute this
 
             stop_value = int(input("enter 0 to start: "))
         else:
             raise ValueError
         if stop_value == 0:
             print("ending........")
-            end = time.time()              # end time using time.time()
+            end = time.time()  # end time using time.time()
             print("elapsed time:  ", round((end - start), 2))  # subtract start time and end time
         else:
             raise ValueError
-    except ValueError:                # if user enters other than 1/0 then raise exception
+    except ValueError:  # if user enters other than 1/0 then raise exception
         print("wrong value")
 
 
-################################## TIC TAC TOE #######################################
+# TIC TAC TOE
 
-board = [' ' for i in range(10)]    # initialise board with range 10 just to add extra space
+board = [' ' for i in range(10)]  # initialise board with range 10 just to add extra space
 
 
-def insert_letter(letter, pos):   # to add x or o at particular position
+def insert_letter(letter, pos):  # to add x or o at particular position
     board[pos] = letter
 
 
-def free_space(pos):              # read or check empty tile
+def free_space(pos):  # read or check empty tile
     return board[pos] == ' '
 
 
-def print_board(board):            # print board of 9x9
+def print_board(board):  # print board of 9x9
     print("  |  | ")
     print(board[1] + ' ' + board[2] + ' ' + board[3] + ' ')  # represents tile numbers
     print("  |  | ")
@@ -283,7 +260,7 @@ def print_board(board):            # print board of 9x9
     print("  |  | ")
 
 
-def winner(b, l):             # take value from tile and store it in common variable
+def winner(b, l):  # take value from tile and store it in common variable
     return (b[1] == l and b[2] == l and b[3] == l or
             b[4] == l and b[5] == l and b[6] == l or  # if the values are equal then it is winning condition
             b[7] == l and b[8] == l and b[9] == l or
@@ -294,125 +271,125 @@ def winner(b, l):             # take value from tile and store it in common vari
             b[3] == l and b[5] == l and b[7] == l)
 
 
-def player_move():                # player move
-    run = True                  # while player is playing
+def player_move():  # player move
+    run = True  # while player is playing
     while run:
-        move = input("select between 1-9: ")   # select between 1-9 as board have 9 tiles
+        move = input("select between 1-9: ")  # select between 1-9 as board have 9 tiles
         try:
-            move = int(move)             # converting string value in integer
+            move = int(move)  # converting string value in integer
             if 0 < move < 10:
                 if free_space(move):
-                    run = False          # after entering move players turn will stop
-                    insert_letter('x', move)   # insert x on players move
+                    run = False  # after entering move players turn will stop
+                    insert_letter('x', move)  # insert x on players move
                 else:
-                    print("this is occupied")   # if already occupied
+                    print("this is occupied")  # if already occupied
 
             else:
-                print("invalid number")     # if number is not in range of 1 to 9
+                print("invalid number")  # if number is not in range of 1 to 9
 
         except ValueError:
-            print("type integer")     # if user enter string value
+            print("type integer")  # if user enter string value
 
 
 def computer_move():
     possible_move = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]
     move = 0
-    for let in ['o', 'x']:      # possible letters on board
-        for i in possible_move:    # possible moves can be empty or 'o'
-            board_copy = board[:]    # board[:] copy the board in variable
+    for let in ['o', 'x']:  # possible letters on board
+        for i in possible_move:  # possible moves can be empty or 'o'
+            board_copy = board[:]  # board[:] copy the board in variable
             board_copy[i] = let
-            if winner(board_copy, let):   # check winning condition
-                move = i         # if move is winning move then select move
+            if winner(board_copy, let):  # check winning condition
+                move = i  # if move is winning move then select move
                 return move
 
-    corner = []                # create corner array which store corner tiles
+    corner = []  # create corner array which store corner tiles
     for i in possible_move:
-        if i in [1, 3, 7, 9]:     # corner tiles
-            corner.append(i)       # place computer move of corner tile
+        if i in [1, 3, 7, 9]:  # corner tiles
+            corner.append(i)  # place computer move of corner tile
 
     if len(corner) > 0:
         move = select_random(corner)  # select random corner tile
         return move
 
-    if 5 in possible_move:        # if winning tile is middle tile 5 then computer will go for 5
+    if 5 in possible_move:  # if winning tile is middle tile 5 then computer will go for 5
         move = 5
         return move
 
-    edge = []                     # edge array
+    edge = []  # edge array
     for i in possible_move:
-        if i in [2, 4, 6, 8]:   # edge tiles
+        if i in [2, 4, 6, 8]:  # edge tiles
             edge.append(i)
 
-    if len(edge) > 0:                 # select non empty edge randomly
+    if len(edge) > 0:  # select non empty edge randomly
         move = select_random(edge)
         return move
 
 
-def select_random(li):     # select randomly from corner array or edge array and store array in li
-    ln = len(li)            # length of li
-    r = random.randrange(0, ln)     # from range 1 to ln select random number for computer move
+def select_random(li):  # select randomly from corner array or edge array and store array in li
+    ln = len(li)  # length of li
+    r = random.randrange(0, ln)  # from range 1 to ln select random number for computer move
     return li[r]
 
 
-def full_board(board):            # check whether all tiles are occupied
-    if board.count(' ') > 1:     # if any of the tile is empty then board is not full
+def full_board(board):  # check whether all tiles are occupied
+    if board.count(' ') > 1:  # if any of the tile is empty then board is not full
         return False
     else:
         return True
 
 
-def main():            # main code to execute tic tac toe
-    print_board(board)    # print the board
-    while not (full_board(board)):   # when board is not full
+def main():  # main code to execute tic tac toe
+    print_board(board)  # print the board
+    while not (full_board(board)):  # when board is not full
 
-        if not (winner(board, ('x'))):   # if user is not winner then computer will play
+        if not (winner(board, ('x'))):  # if user is not winner then computer will play
             move = computer_move()
-            if move == 0:               # if no moves left then print  tie game
+            if move == 0:  # if no moves left then print  tie game
                 print("tie")
             else:
-                insert_letter('o', move)    # if not then insert computer move
+                insert_letter('o', move)  # if not then insert computer move
                 print("computer move: ", move)
-            print_board(board)            # print updated board
+            print_board(board)  # print updated board
 
         else:
             print("user won")
             break
 
         if not (winner(board, ('o'))):
-            player_move()                 # player move
-            print_board(board)            # print updated board after player move
+            player_move()  # player move
+            print_board(board)  # print updated board after player move
 
         else:
             print("computer won")
             break
 
-    if full_board(board):                # if board is full and no winning condition is satisfied
-        print("tie")                       # then print tie
+    if full_board(board):  # if board is full and no winning condition is satisfied
+        print("tie")  # then print tie
 
 
-################################## PERMUTATION #######################################
+# PERMUTATION
 
 def permutation_py(data):
-    if len(data) == 0:    # if length of string is 0 then return empty list
+    if len(data) == 0:  # if length of string is 0 then return empty list
         return ['']
     prev_list = permutation_py(data[1:len(data)])  # recursive function to store list in new list except 0th element
-    next_list = []                             # create empty list
-    for i in range(0, len(prev_list)):   # read new list and old list
+    next_list = []  # create empty list
+    for i in range(0, len(prev_list)):  # read new list and old list
         for j in range(0, len(data)):
             new_str = prev_list[i][0:j] + data[0] + prev_list[i][j:len(data) - 1]  # take one string and attach
-            if new_str not in next_list:                                           # remaining strings
-                next_list.append(new_str)   # if new generated strings are not in new list then append them
+            if new_str not in next_list:  # remaining strings
+                next_list.append(new_str)  # if new generated strings are not in new list then append them
     return next_list
 
 
-################################## ANAGRAM ###########################################
+# ANAGRAM
 
 def anagram_check(str1, str2):
-    list_str1 = list(str1)        # convert string in list format
+    list_str1 = list(str1)  # convert string in list format
     list_str2 = list(str2)
-    if len(list_str1) != len(list_str2):   # if length is not equal then is is not anagram
+    if len(list_str1) != len(list_str2):  # if length is not equal then is is not anagram
         print("not anagram")
-    else:                                     # if length is equal
+    else:  # if length is equal
         for i in range(len(list_str1) - 1):
             for j in range(len(list_str1) - 1):
                 if list_str1[j] > list_str1[j + 1]:  # sort the elements in list
@@ -422,32 +399,32 @@ def anagram_check(str1, str2):
 
         for p in range(len(list_str2) - 1):
             for q in range(len(list_str2) - 1):
-                if list_str2[q] > list_str2[q + 1]:   # sorting
+                if list_str2[q] > list_str2[q + 1]:  # sorting
                     list_str2[q + 1], list_str2[q] = list_str2[q], list_str2[q + 1]  # swap
 
         print("sorted 2: ", list_str2)
 
-        if list_str1 == list_str2:    # if both the sorted list are equal then it's anagram
+        if list_str1 == list_str2:  # if both the sorted list are equal then it's anagram
             print("it is anagram")
         else:
             print("not anagram")
 
 
-################################## PRIME NUMBERS ###########################################
+# PRIME NUMBERS
 
 def prime_numbers():
-    for num in range(0, 1000):   # take range of 0-1000 numbers
-        if num > 1:                # number should be greater than 1 as 1 is not prime and number should be non negative
+    for num in range(0, 1000):  # take range of 0-1000 numbers
+        if num > 1:  # number should be greater than 1 as 1 is not prime and number should be non negative
             for i in range(2, num):  # range between 2 to given number as 2 is prime number
-                if (num % i) == 0:   # if given number mod number in range is 0 then it is prime
+                if (num % i) == 0:  # if given number mod number in range is 0 then it is prime
                     break
             else:
                 print(num)
 
 
-################################## PALINDROM #################################################
+# PALINDROME
 
-def check_condition():   # taking prime numbers between 0-1000
+def check_condition():  # taking prime numbers between 0-1000
     list_prime = []
     for num in range(0, 1000):
         if num > 1:
@@ -462,46 +439,45 @@ def check_condition():   # taking prime numbers between 0-1000
     palindrome(list_prime)
 
 
-def palindrome(number):     # every prime number which is palindrome is always anagram
-    p = []                  # create list
+def palindrome(number):  # every prime number which is palindrome is always anagram
+    p = []  # create list
     for num in number:
-        num = str(num)      # convert int to string
-        rev = num[::-1]     # reverse string
-        if num == rev:       # if original number is equal to reverse string then it is palindrome
-            p.append(int(rev))   # append number
+        num = str(num)  # convert int to string
+        rev = num[::-1]  # reverse string
+        if num == rev:  # if original number is equal to reverse string then it is palindrome
+            p.append(int(rev))  # append number
     print("palindrome number ", p)
 
 
-##################################### ALGORITHMS ###################################
-elapsed_time = {}
+# ALGORITHMS
+elapsed_time = {}    # create a dictionary for storing elapsed time
 
 
 def binarysearchint(list_int, key):
-    s1 = time.time()
-    list_int.sort()
-    start = 0
+    s1 = time.time()           # store starting time
+    list_int.sort()            # sort list
+    start = 0                   # initial position
     print(list_int)
-    end = len(list_int)
-    for i in range(start, end):
-        mid = start + (end - start) // 2
+    end = len(list_int)          # length of list will be the end
+    for i in range(start, end):   # execute till start to end
+        mid = start + (end - start) // 2       # calculate mid
 
-        if list_int[mid] == key:
+        if list_int[mid] == key:         # if mid is element to be search then print found
             # globals() ['index'] = mid
             print("found at ", mid, "index")
             break
 
-        elif key > list_int[mid]:
+        elif key > list_int[mid]:    # if element to be search is greater than mid then mid is new start
             start = mid
 
         else:
-            end = mid
+            end = mid         # if element to be search is less than mid then mid is new end
 
     else:
         print("not found")
-    e1 = time.time()
-    el1 = e1 - s1
-    elapsed_time.update({"binary int": el1})
-    # print(elapsed_time)
+    e1 = time.time()            # record end time
+    el1 = e1 - s1             # elapsed time
+    elapsed_time.update({"binary int": el1})  # adding to dictionary
 
 
 def binarysearchstring(list_string, key2):
@@ -553,6 +529,7 @@ def bubblesortint(list_int):
 def bubblesortstring(list_string):
     s4 = time.time()
     length = len(list_string)
+    i = 0
     for i in range(1, length - 1):
         print("pass ", i)
 
@@ -603,14 +580,13 @@ def insertionsortstring(list_string):
     print("sorted elapsed time", sorted_elapsed)
 
 
-########################################## GUESS NUMBER #############################
+# GUESS NUMBER
 
 def guess(low, k):
     mid = low + (k - low) // 2
 
     if (k - low) == 1:
         print("your number is ", mid)
-
 
     else:
         print("is your number less than ", mid)
@@ -622,20 +598,20 @@ def guess(low, k):
             guess(mid, k)
 
 
-################################ READ FILE ##########################################
+# READ FILE
 
 def filesearching(list_file):
     key2 = input("enter word to be search ")
     binarysearchstring(list_file, key2)
 
 
-################################### INSERTION SORT ##################################
+# INSERTION SORT
 
 def userstring(stringlist):
     insertionsortstring(stringlist)
 
 
-################################### BUBBLE SORT #####################################
+# BUBBLE SORT
 def bubblesort(listinteger):
     for p in range(len(listinteger) - 1):
         for q in range(len(listinteger) - 1):
@@ -649,7 +625,8 @@ def userint(intlist):
     bubblesort(intlist)
 
 
-################################### MERGE SORT ##########################################
+# MERGE SORT
+
 def merge_sort(array):
     if len(array) <= 1:
         return array
@@ -669,27 +646,27 @@ def merge_sort(array):
 
 def merge(left, right):
     result = []
-    leftindex = rightindex = 0
+    left_index = right_index = 0
 
-    while leftindex < len(left) and rightindex < len(right):
+    while left_index < len(left) and right_index < len(right):
 
-        if left[leftindex] < right[rightindex]:
+        if left[left_index] < right[right_index]:
 
-            result.append(left[leftindex])
-            leftindex += 1
+            result.append(left[left_index])
+            left_index += 1
 
         else:
 
-            result.append(right[rightindex])
-            rightindex += 1
+            result.append(right[right_index])
+            right_index += 1
 
-    result.extend(left[leftindex:])
-    result.extend(right[rightindex:])
+    result.extend(left[left_index:])
+    result.extend(right[right_index:])
 
     return result
 
 
-################################# VENDING MACHINE ###################################
+# VENDING MACHINE
 notes = (1000, 500, 100, 50, 10, 5, 2, 1)  # notes in vending machine in form of tuples
 
 
@@ -717,7 +694,7 @@ def vending(amount):
         print("RecursionError")
 
 
-################################## TEMPERATURE CONVERSION ###########################
+# TEMPERATURE CONVERSION
 
 def f_to_c(f):
     c = (f - 32) * (5 / 9)  # formula for calculation
@@ -731,8 +708,8 @@ def c_to_f(c):
     print("temperature in fahrenheit: ", f)
 
 
-############################ SQUREROOT OF NUMBER####################################
-def sqrnum(c):
+# SQUARE ROOT OF NUMBER
+def sqr_num(c):
     t = c
     epsilon = 1e-15
     while abs(t - c / t) > epsilon * t:
@@ -740,16 +717,17 @@ def sqrnum(c):
     print("Square Root : ", t)
 
 
-################################# MONTHLY PAYMENT###################################
-def monthlypay(p, y, r):
-    totalmonths = 12 * y
-    mrate = r / (12 * 100)
-    payment = p * mrate / 1 - (1 + mrate) ** (-totalmonths)
+# MONTHLY PAYMENT
+def monthly_pay(p, y, r):
+    total_months = 12 * y
+    m_rate = r / (12 * 100)
+    payment = p * m_rate / 1 - (1 + m_rate) ** (-total_months)
     print("Payment : ", payment)
 
 
-############################## DAY OF WEEK #########################################
-def dayweek(day, Month, year):
+# DAY OF WEEK
+
+def day_week(day, months, year):
     year = int(year)
 
     month = {
@@ -772,39 +750,71 @@ def dayweek(day, Month, year):
         1: "Monday",
         2: "Tuesday",
         3: "Wednesday",
-        4: "Thusday",
+        4: "Thursday",
         5: "Friday",
         6: "Saturday",
     }
 
-    print(day, month.get(Month), year)
+    print(day, month.get(months), year)
 
-    year1 = year - (14 - Month) // 12
+    year1 = year - (14 - months) // 12
     x = year1 + year1 // 4 - year1 // 100 + year1 // 400
-    month1 = Month + 12 * ((14 - Month) // 12) - 2
+    month1 = months + 12 * ((14 - months) // 12) - 2
     date1 = (day + x + 31 * month1 // 12) % 7
     print(date1, " : ", days.get(date1))
 
 
-####################################### CONVERT TO BINARY ######################################
+# CONVERT TO BINARY
 
-def convertbinary(n):
-    binarynumber = " "  # consider result in string format
+def convert_binary(n):
+    binary_number = " "  # consider result in string format
 
     for x in range(8):  # number should be of 8 digit so use range 8
         r = n % 2  # divide number by 2 and store the remainder which will be one of the digit
         n = n // 2  # from output. Now division will be the next number to process
-        binarynumber += str(r)  # append the value of r as a string to result.
+        binary_number += str(r)  # append the value of r as a string to result.
 
-    binarynumber = binarynumber[::-1]  # reverse the string
-# now if there are less digits than 8 then it will append 0's at starting because of for loop condition
+    binary_number = binary_number[::-1]  # reverse the string
+    # now if there are less digits than 8 then it will append 0's at starting because of for loop condition
 
-    print("binary number : ", binarynumber)
+    # print("binary number : ", binary_number)
+    return binary_number
 
-###################################### BINARY TO DECIMAL ########################################
 
-def decimalconvert(m):
-    pass
+# BINARY TO DECIMAL
+
+def decimal_convert(m):
+    b = convert_binary(m)
+    print("old binary", b)
+
+    b = str(b)
+    lef = b[0:4]
+    r = b[4:8]
+    print("l ", lef, "r ", r)
+
+    temp = lef
+    lef = r
+    r = temp
+    print("l ", lef, "r ", r)
+    new_number = lef + r
+    print("new binary: ", new_number)
+    new_decimal = int(new_number, 2)
+    print("new decimal number is : ", new_decimal)
+    if num_power(new_decimal):
+        print("power of 2")
+    else:
+        print("not power of 2")
+
+
+def num_power(x):
+    if x == 0:
+        return False
+    while x != 1:
+        if x % 2 != 0:
+            return False
+        x = x // 2
+
+    return True
 
 
 
