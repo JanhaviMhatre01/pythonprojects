@@ -1,13 +1,12 @@
 '''
 /**********************************************************************************
-* Purpose: To the Util Class add dayOfWeek static function that takes a date as input and
-* prints the day of the week that date falls on.
-* logic :
+* Purpose: Create a Unordered Linked List. The Basic Building Block is the Node Object. Each node object must
+* hold at least two pieces of information. One ref to the data field and second the ref to the next node object.
 *
 * @author : Janhavi Mhatre
 * @python version 3.7
 * @platform : PyCharm
-* @since 26-12-2018
+* @since 29-12-2018
 *
 ***********************************************************************************/
 '''
@@ -52,23 +51,23 @@ class LinkedList:  # wrapper class for node class. user will never interface wit
 
     def display(self):  # to display list
 
-        elements = []  # list to
+        elements = []  # list to store elements in linked list
         current_node = self.head
-        while current_node.next is not None:
+        while current_node.next is not None:    # if there is no value in linked list then start loop
             current_node = current_node.next
-            elements.append(current_node.data)
+            elements.append(current_node.data)     # append data to element list
         print('data in linked list ', elements)
         find_word = input("Enter the element to search ")
-        my_list.search(find_word, elements)
+        my_list.search(find_word, elements)           # search in linked list, given number in elements list
 
-    def search(self, data, elements):
+    def search(self, data, elements):      # function to search element
         current = self.head
-        found = False
+        found = False               # initialise that element to be search is not found
         while current and found is False:
-            if current.get_data() == data:
+            if current.get_data() == data:  # fetch the data using get_data
                 found = True
                 print("Element found ")
-                my_list.delete(data, elements)
+                my_list.delete(data, elements)   # if searched element found then delete that element from linked list
 
                 print("Element deleted: ")
                 my_list.write(elements)
@@ -77,52 +76,53 @@ class LinkedList:  # wrapper class for node class. user will never interface wit
                 current = current.get_next()
         if current is None:
             print("Data was not in list and added to list")
-            my_list.add(data)
+            my_list.add(data)    # if searched element not found then add to list
+            # at particular position such that list is sorted
         return current
 
-    def delete(self, data, elements):
+    def delete(self, data, elements):      # delete function
         current = self.head
         previous = None
         found = False
-        while current and found is False:
+        while current and found is False:  # search procedure
             if current.get_data() == data:
                 found = True
 
             else:
-                previous = current
-                current = current.get_next()
+                previous = current            # after deleting node assign previous node to current
+                current = current.get_next()   # current node will get index of next
         if current is None:
             print("Data not in list")
         if previous is None:
-            self.head = current.get_next()
+            self.head = current.get_next()    # add node in particular position and get index of next
         else:
             previous.set_next(current.get_next())
 
     def write(self, elements):
-        f1 = open('/home/admin1/bridgelabz_pythonproj/sampletext.txt', 'w')
+        f1 = open('/home/admin1/bridgelabz_pythonproj/sampletext.txt', 'w')    # open file in write mode
         f1.close()
-        with open('/home/admin1/bridgelabz_pythonproj/sampletext.txt', 'a') as f:
-            f.write(','.join(str(word) for word in elements))
+        with open('/home/admin1/bridgelabz_pythonproj/sampletext.txt', 'a') as f:   # open file in append mode
+            f.write(','.join(str(word) for word in elements))       # added element should be ',' separated
 
 
-my_list = LinkedList()
-# my_list = LinkedList()
+my_list = LinkedList()   # declaring my_list as linked list
+
 
 file = open("/home/admin1/bridgelabz_pythonproj/sampletext.txt", 'r')  # Open the file in Read mode into variable file
 d = file.read().split(",")  # Read the file separate by ,
-d[-1] = d[-1].strip()
+d[-1] = d[-1].strip()    # removes space after end element
 
-word_list = []
+word_list = []            # store elements from file in list
 new = str(d).strip('[]')
 for word in d:
     word_list.append(word)
 
 print('elements from  file : ', word_list)
 
-for i in word_list:
+for i in word_list:      # add elements from list word_list to linked list
     my_list.add(i)
 print("data in linked list")
 
-my_list.display()
+my_list.display()      # display linked list without changes
 
-my_list.display()
+my_list.display()      # display linked list with changes

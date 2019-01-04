@@ -1,96 +1,53 @@
-class Node:
-    def __init__(self,initdata):
-        self.data = initdata
-        self.next = None
+'''
+/**********************************************************************************
+* Purpose: Create a Slot of 10 to store Chain of Numbers that belong to each Slot to
+* efficiently search a number from a given set of number
 
-    def getData(self):
-        return self.data
+* @author : Janhavi Mhatre
+* @python version 3.7
+* @platform : PyCharm
+* @since 3-1-2019
+*
+***********************************************************************************/
+'''
 
-    def getNext(self):
-        return self.next
+size = 11
 
-    def setData(self,newdata):
-        self.data = newdata
+slot = [None] * size
+data = [[] for _ in range(10)]
 
-    def setNext(self,newnext):
-        self.next = newnext
+print("stores key values ", slot)
+# print("stores key data ", data)
 
+filename = "/home/admin1/bridgelabz_pythonproj/samplelist.txt"
+with open(filename) as f:
+    values = f.read().split(" ")
+    values[-1] = values[-1].strip()
 
-class OrderedList:
-    def __init__(self):
-        self.head = None
+print("values in file: ", values)
 
-    def search(self,item):
-        current = self.head
-        found = False
-        stop = False
-        while current != None and not found and not stop:
-            if current.getData() == item:
-                found = True
-            else:
-                if current.getData() > item:
-                    stop = True
-                else:
-                    current = current.getNext()
+values = [int(x) for x in values]
+def hash_function(x):
 
-        return found
-
-    def display(self):  # to display list
-
-        elements = []  # list to
-        current_node = self.head
-        while current_node.next is not None:
-            current_node = current_node.next
-            elements.append(current_node.data)
-        print('data in linked list ', elements)
-        #find_word = input("Enter the element to search ")
-        #my_list.search(find_word, elements)
-
-    def add(self,item):
-        current = self.head
-        previous = None
-        stop = False
-        while current != None and not stop:
-            if current.getData() > item:
-                stop = True
-            else:
-                previous = current
-                current = current.getNext()
-
-        temp = Node(item)
-        if previous == None:
-            temp.setNext(self.head)
-            self.head = temp
-        else:
-            temp.setNext(current)
-            previous.setNext(temp)
-
-    def isEmpty(self):
-        return self.head == None
-
-    
+    return x % 11
 
 
-mylist = OrderedList()
-# mylist.add(31)
-# mylist.add(77)
-# mylist.add(17)
-# mylist.add(93)
-# mylist.add(26)
-# mylist.add(54)
+# values = [int(value) for value in values]
 
-file = open("/home/admin1/bridgelabz_pythonproj/sampleint.txt", 'r')  # Open the file in Read mode into variable file
-d = file.read().split(",")  # Read the file separate by ,
-d[-1] = d[-1].strip()
-
-word_list = []
-new = str(d).strip('[]')
-for word in d:
-    word_list.append(word)
-    #word_list.sort()
-
-print('elements from  file : ', word_list)
-
-#mylist.display()
+# hashvalues = map(hash_function, values)
+# hashvalues = list(hashvalues)
+# print("hash values ",hashvalues)
 
 
+
+def insert(data, key, values):
+    for i in values:
+        #slot[hash_function(key)] = i
+        data[hash_function(key)].append(i)
+        #print(data)
+
+insert(slot, 15, 'cat')
+# insert(slot, 15, 'dog')
+
+#print(slot)
+#print(data)
