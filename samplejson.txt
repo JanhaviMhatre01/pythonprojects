@@ -1,0 +1,1 @@
+{"rice": {"name": "kolam", "price": 70, "weight": 22}, "pulses": {"name": "dry peas", "price": 103, "weight": 25}, "wheat": {"name": "spelt", "price": 100, "weight": 150}}
